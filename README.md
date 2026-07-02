@@ -9,7 +9,7 @@ This repository contains the source code for my personal portfolio website.
 - Certifications
 - Contact Information
 
-### Tech Stack
+## Tech Stack
 - HTML
 - CSS
 - JavaScript
