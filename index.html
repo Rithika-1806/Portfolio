@@ -1,523 +1,781 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Portfolio of Rithika K, a Computer Science Engineering student passionate about web development.">
-    <title>Rithika K | Developer Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="theme-minimal.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rithika K | Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Rithika K's Personal Portfolio. Final-year Computer Science Engineering student passionate about Full Stack Web Development, Backend Systems, and AI-powered applications.">
+  <meta name="keywords" content="Rithika K, Rithika, Full Stack Developer, Computer Science Engineer, Java, Python, Django, Spring Boot, React, NLP, Software Developer, Resume Analyzer, Portfolio, LeetCode">
+  <meta name="author" content="Rithika K">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rithika K | Portfolio">
+  <meta property="og:description" content="Hi! I'm Rithika, a Computer Science Engineering student passionate about Full Stack Web Development and AI. Check out my latest projects and experience.">
+  <meta property="og:image" content="resume-analyser.png">
+  
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e25c34' stroke='%231c1d1a' stroke-width='4'/%3E%3Cpath d='M35,65 Q50,80 65,65' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='40' cy='45' r='6' fill='%23ffffff'/%3E%3Ccircle cx='60' cy='45' r='6' fill='%23ffffff'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Background Elements for Glassmorphism -->
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar glass">
-        <div class="nav-content">
-            <a href="#home" class="logo">Rithika K<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-controls">
-                <button id="theme-toggle" aria-label="Toggle Dark Mode">
-                    <i class="fas fa-sun toggle-icon"></i>
-                </button>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
+  <!-- Loading Animation Screen -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <svg class="loader-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle class="loader-circle-outer" cx="50" cy="50" r="40" />
+        <circle class="loader-circle-inner" cx="50" cy="50" r="22" />
+      </svg>
+      <div class="loader-text">Loading...</div>
+    </div>
+  </div>
+
+  <!-- Dynamic Drift Particles Container -->
+  <div class="particles-container" id="particlesContainer"></div>
+
+  <!-- Navigation Menu (Neo-Brutalist blocky navbar) -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo" aria-label="Rithika K Home">
+        <span class="logo-text">Rithika K</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link">HOME</a>
+        <a href="#internships" class="nav-link">INTERNSHIPS</a>
+        <a href="#skills" class="nav-link">SKILLS</a>
+        <a href="#portfolio" class="nav-link">PORTFOLIO</a>
+        <a href="#contact" class="nav-link btn btn-nav-cta">CONTACT NOW</a>
+      </div>
+
+      <!-- Theme & Hamburger controls -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Switch -->
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Hamburger Button -->
+        <button id="hamburgerBtn" class="hamburger-btn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay Menu -->
+  <div id="mobileMenu" class="mobile-menu-overlay" aria-hidden="true">
+    <div class="mobile-menu-content">
+      <a href="#home" class="mobile-nav-link" style="--item-index: 1;">HOME</a>
+      <a href="#internships" class="mobile-nav-link" style="--item-index: 2;">INTERNSHIPS</a>
+      <a href="#skills" class="mobile-nav-link" style="--item-index: 3;">SKILLS</a>
+      <a href="#portfolio" class="mobile-nav-link" style="--item-index: 4;">PORTFOLIO</a>
+      <a href="#contact" class="mobile-nav-link" style="--item-index: 5;">CONTACT ME</a>
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="hero scroll-reveal" id="home">
+      <div class="hero-text animate-fade-left">
+        <h1 class="hero-title">Rithika K</h1>
+        
+        <p class="hero-description">
+          Final-year Computer Science Engineering student with hands-on experience in Full Stack Web Development and AI-based applications. Passionate about engineering high-quality software, designing intuitive user experiences, and building robust backend services. Adaptable and eager to contribute technical skills to solve complex problems and drive value across diverse team environments.
+        </p>
+        
+        <!-- Social Buttons -->
+        <div class="hero-socials">
+          <a href="https://github.com/Rithika-1806" target="_blank" class="hero-social-btn" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="hs-icon"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.234c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.82 1.102.82 2.222v3.293c0 .319.22.694.825.576C20.565 21.795 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/rithika-kv/" target="_blank" class="hero-social-btn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="hs-icon"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="mailto:rithika.kv18@gmail.com" class="hero-social-btn" title="Gmail">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="hs-icon"><path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-6.887 4.114-4.833 0-8.775-3.925-8.775-8.775s3.942-8.775 8.775-8.775c2.33 0 4.367.87 5.934 2.285l3.225-3.225C17.43 1.86 15.03 1 12.24 1 6.032 1 12.24s5.032 11.24 11.24 11.24c6.478 0 10.793-4.537 10.793-10.985 0-.746-.08-1.302-.222-1.886H12.24z"/></svg>
+          </a>
+          <a href="https://leetcode.com/u/Rithika182/" target="_blank" class="hero-social-btn" title="LeetCode">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="hs-icon"><path d="M13.483 0a1.374 1.374 0 0 0-.961.411L7.11 5.826a1.372 1.372 0 0 0-.41 1.011 1.353 1.353 0 0 0 .41 1.002l4.887 4.887a1.372 1.372 0 0 0 1.942 0 1.354 1.354 0 0 0 0-1.942l-3.916-3.916h8.887A1.378 1.378 0 0 0 24 7.5a1.377 1.377 0 0 0-1.378-1.378h-8.887l3.916-3.916c.55-.55.55-1.42 0-1.97A1.365 1.365 0 0 0 13.483 0zM10.43 10.43L.41 20.45a1.372 1.372 0 0 0 0 1.942 1.354 1.354 0 0 0 1.942 0l10.02-10.02a1.372 1.372 0 0 0 0-1.942 1.353 1.353 0 0 0-1.942 0z"/></svg>
+          </a>
         </div>
-    </nav>
 
-    <main>
-        <!-- Home Section -->
-        <section id="home" class="hero-section">
-            <div class="container">
-                <div class="hero-content fade-in-up">
-                    <p class="greeting">Hello, I'm</p>
-                    <h1 class="name">Rithika K</h1>
-                    <h2 class="role">Computer Science Engineering Student</h2>
-                    <p class="intro-text">
-                        Passionate about web development and building user-friendly applications.
-                    </p>
-                    <div class="action-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="RITHIKA K RESUME.pdf" class="btn btn-outline" download>
-                            <i class="fas fa-download"></i> Download Resume
-                        </a>
-                        <a href="https://github.com/Rithika-byte" target="_blank" rel="noopener" class="btn btn-icon" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/rithika-k-27161b296/" target="_blank" rel="noopener" class="btn btn-icon" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <div class="divider"></div>
-                </div>
-                <div class="about-content glass card fade-in-up">
-                    <p>
-                        Seeking an entry-level opportunity where I can apply my computer science knowledge and
-                        programming skills in a practical environment. I am eager to learn from real-world projects and
-                        contribute effectively to the organization's goals. I am committed to continuous learning and
-                        professional growth.
-                    </p>
-                    <div class="about-info grid-2">
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span><strong>Location:</strong> Coimbatore, India</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span><strong>Email:</strong> <a style="color: inherit; text-decoration: none;" href="mailto:rithika.kv18@gmail.com">rithika.kv18@gmail.com</a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Skills & Tools</h2>
-                    <div class="divider"></div>
-                </div>
-
-                <div class="skills-wrapper fade-in-up">
-                    <div class="skills-grid">
-                        <!-- Programming Languages -->
-                        <div class="skill-category glass card">
-                            <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fab fa-java"></i> Java</span>
-                                    <span class="skill-percent">85%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fab fa-python"></i> Python (Basics)</span>
-                                    <span class="skill-percent">65%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="65"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fas fa-database"></i> MongoDB (Basics)</span>
-                                    <span class="skill-percent">60%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="60"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Frontend Development -->
-                        <div class="skill-category glass card">
-                            <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fab fa-html5"></i> HTML</span>
-                                    <span class="skill-percent">90%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="90"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fab fa-css3-alt"></i> CSS</span>
-                                    <span class="skill-percent">85%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="85"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fab fa-js-square"></i> JavaScript</span>
-                                    <span class="skill-percent">75%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="75"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-info">
-                                    <span class="skill-name"><i class="fab fa-react"></i> React (Basics)</span>
-                                    <span class="skill-percent">60%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar" data-width="60"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Developer Tools -->
-                        <div class="skill-category glass card">
-                            <h3><i class="fas fa-tools"></i> Developer Tools</h3>
-                            <div class="tools-grid">
-                                <div class="tool-badge"><i class="fab fa-git-alt"></i> Git</div>
-                                <div class="tool-badge"><i class="fab fa-github"></i> GitHub</div>
-                                <div class="tool-badge"><i class="fas fa-code"></i> VS Code</div>
-                                <div class="tool-badge"><i class="fas fa-rocket"></i> Antigravity</div>
-                            </div>
-                        </div>
-
-                        <!-- Soft Skills -->
-                        <div class="skill-category glass card">
-                            <h3><i class="fas fa-users"></i> Soft Skills</h3>
-                            <div class="tools-grid">
-                                <div class="tool-badge">Adaptability</div>
-                                <div class="tool-badge">Problem Solving</div>
-                                <div class="tool-badge">Decision Making</div>
-                                <div class="tool-badge">Leadership</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Projects</h2>
-                    <div class="divider"></div>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card glass fade-in-up">
-                        <div class="project-content">
-                            <h3 class="project-title">Resume Analyzer & Skill Gap Detector</h3>
-                            <p class="project-desc">
-                                Developed a resume analysis system that evaluates candidate suitability by comparing
-                                resumes with job requirements. Identifies skill gaps and provides personalized
-                                recommendations with skill-based mock tests.
-                            </p>
-                            <div class="project-tech">
-                                <span>Python</span>
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Rithika-byte/Resume-Analyzer-Skill-Gap-Detector" target="_blank" rel="noopener" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="project-card glass fade-in-up" style="transition-delay: 0.2s">
-                        <div class="project-content">
-                            <h3 class="project-title">E-Commerce Store Website</h3>
-                            <div class="internship-tag">CodeAlpha Internship</div>
-                            <p class="project-desc">
-                                Developed a responsive e-commerce website allowing users to browse products and explore
-                                an online shopping interface. Implemented structured product pages and smooth
-                                navigation.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Rithika-byte/CodeAlpha_Ecommerce_Store" target="_blank" rel="noopener" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 -->
-                    <div class="project-card glass fade-in-up" style="transition-delay: 0.3s">
-                        <div class="project-content">
-                            <h3 class="project-title">Social Media Web Interface</h3>
-                            <div class="internship-tag">CodeAlpha Internship</div>
-                            <p class="project-desc">
-                                Built a social media interface where users can view posts and interact with content.
-                                Focused on responsive design and structured UI components.
-                            </p>
-                            <div class="project-tech">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Rithika-byte/CodeAlpha_FullStack_Internship/tree/main/Social-media-app" target="_blank" rel="noopener" class="btn btn-sm btn-outline"><i class="fab fa-github"></i> Source Code</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Internships</h2>
-                    <div class="divider"></div>
-                </div>
-
-                <div class="timeline fade-in-up">
-                    <!-- Internship 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass card">
-                            <div class="timeline-header">
-                                <h3>Web Development Intern</h3>
-                                <span class="timeline-duration"><i class="far fa-calendar-alt"></i> 1 Month</span>
-                            </div>
-                            <h4 class="company">Mist Solutions Software</h4>
-                            <p>
-                                Completed a short-term internship focused on front-end web development. Assisted in
-                                designing responsive web pages and learned industry practices for building user-friendly
-                                websites.
-                            </p>
-                            <div class="project-tech mt-3">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Internship 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content glass card">
-                            <div class="timeline-header">
-                                <h3>Full Stack Development Intern</h3>
-                                <span class="timeline-duration"><i class="far fa-calendar-alt"></i> 1 Month</span>
-                            </div>
-                            <h4 class="company">CodeAlpha</h4>
-                            <p>
-                                Worked on web development tasks and built projects including an E-commerce Store and a
-                                Social Media Web Interface. Gained experience in responsive UI design and front-end
-                                development practices.
-                            </p>
-                            <div class="project-tech mt-3">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education & Misc Section -->
-        <section id="education" class="section">
-            <div class="container">
-                <div class="grid-2">
-                    <!-- Education Column -->
-                    <div class="fade-in-up">
-                        <div class="section-header align-left">
-                            <h2 class="section-title">Education</h2>
-                            <div class="divider"></div>
-                        </div>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content glass card">
-                                    <h3>B.Tech - Computer Science and Engineering</h3>
-                                    <h4 class="company">Dr. N.G.P Institute of Technology, Coimbatore</h4>
-                                    <p class="highlight">CGPA: 8.51 (up to 5th semester)</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
-                                <div class="timeline-content glass card">
-                                    <h3>HSC (Higher Secondary)</h3>
-                                    <h4 class="company">Hindusthan Matriculation and Higher Secondary School</h4>
-                                    <p class="highlight">Percentage: 87%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Other Details Column -->
-                    <div class="fade-in-up" style="transition-delay: 0.2s">
-                        <div class="section-header align-left">
-                            <h2 class="section-title">Certifications & Activities</h2>
-                            <div class="divider"></div>
-                        </div>
-                        <div class="misc-grid">
-                            <div class="glass card misc-card">
-                                <h3><i class="fas fa-certificate"></i> Courses</h3>
-                                <ul>
-                                    <li>Introduction to IoT – NPTEL</li>
-                                    <li>Cloud Computing – NPTEL</li>
-                                </ul>
-                            </div>
-                            <div class="glass card misc-card">
-                                <h3><i class="fas fa-language"></i> Languages</h3>
-                                <div class="tools-grid">
-                                    <div class="tool-badge">Tamil</div>
-                                    <div class="tool-badge">English</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Events & Participations Full Width -->
-                <div class="fade-in-up mt-5" style="margin-top: 3rem;">
-                    <div class="glass card misc-card" style="padding: 2.5rem;">
-                        <h3 style="font-size: 1.8rem; margin-bottom: 2rem; justify-content: center;"><i class="fas fa-trophy"></i> Events & Participations</h3>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                            
-                            <!-- Paper Presentation -->
-                            <div style="background: rgba(99, 102, 241, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
-                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.2rem;">Paper Presentation</h4>
-                                <div style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">
-                                    <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> Kongu Engineering College
-                                </div>
-                                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
-                                    Presented an innovative technical paper, showcasing research, analytical thinking, and communication skills on advanced technical concepts.
-                                </p>
-                            </div>
-
-                            <!-- Hackathon -->
-                            <div style="background: rgba(99, 102, 241, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
-                                <h4 style="color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.2rem;">Hackathon</h4>
-                                <div style="color: var(--primary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">
-                                    <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> KPR Institute of Technology
-                                </div>
-                                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5;">
-                                    Collaborated in a competitive environment to rapidly prototype and develop a software solution within a strict time limit.
-                                </p>
-                            </div>
-                            
-                            <!-- Workshops -->
-                            <div style="background: rgba(99, 102, 241, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border);">
-                                <h4 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.2rem;">Workshops</h4>
-                                <ul style="list-style-type: none; padding: 0; margin: 0; color: var(--text-secondary); font-size: 0.95rem;">
-                                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 10px;">
-                                        <i class="fas fa-angle-right" style="color: var(--primary-color); margin-top: 5px;"></i>
-                                        <div>
-                                            <strong>Augmented Reality</strong>
-                                            <div style="font-size: 0.85em; color: var(--primary-color);">Coimbatore Institute of Technology (CIT)</div>
-                                        </div>
-                                    </li>
-                                    <li style="display: flex; align-items: flex-start; gap: 10px;">
-                                        <i class="fas fa-angle-right" style="color: var(--primary-color); margin-top: 5px;"></i>
-                                        <div>
-                                            <strong>Machine Learning</strong>
-                                            <div style="font-size: 0.85em; color: var(--primary-color);">Workshop Participation</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <div class="divider"></div>
-                </div>
-
-                <div class="contact-wrapper fade-in-up">
-                    <div class="contact-info glass card">
-                        <h3>Contact Information</h3>
-                        <p>Feel free to reach out for career opportunities, collaborations, or simply to say hello.</p>
-
-                        <div class="contact-methods">
-                            <a href="mailto:rithika.kv18@gmail.com" class="contact-item">
-                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                                <div>
-                                    <span class="contact-label">Email</span>
-                                    <span class="contact-value">rithika.kv18@gmail.com</span>
-                                </div>
-                            </a>
-                            <a href="https://github.com/Rithika-1806" target="_blank" rel="noopener"
-                                class="contact-item">
-                                <div class="contact-icon"><i class="fab fa-github"></i></div>
-                                <div>
-                                    <span class="contact-label">GitHub</span>
-                                    <span class="contact-value">github.com/Rithika-byte</span>
-                                </div>
-                            </a>
-                            <a href="https://www.linkedin.com/in/rithika-kv/" target="_blank" rel="noopener"
-                                class="contact-item">
-                                <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
-                                <div>
-                                    <span class="contact-label">LinkedIn</span>
-                                    <span class="contact-value">Rithika K</span>
-                                </div>
-                            </a>
-                            <div class="contact-item">
-                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                                <div>
-                                    <span class="contact-label">Location</span>
-                                    <span class="contact-value">Coimbatore, India</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Rithika K. Built with passion.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">CONTACT ME</a>
+          <a href="RITHIKA K (1).pdf" target="_blank" class="btn btn-primary" download="Rithika_Resume.pdf">SEE MY RESUME</a>
         </div>
-    </footer>
+      </div>
+      
+      <!-- Right Side: 3D Neo-Brutalist developer emblem -->
+      <div class="hero-illustration animate-fade-right">
+        <svg class="main-illustration float-anim" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+          <!-- Behind shadow box -->
+          <rect x="230" y="130" width="340" height="340" rx="20" fill="none" stroke="#1c1d1a" stroke-width="4" />
+          <rect x="245" y="145" width="340" height="340" rx="20" fill="#b3d395" stroke="#1c1d1a" stroke-width="4" />
+          <rect x="230" y="130" width="340" height="340" rx="20" fill="#faf6eb" stroke="#1c1d1a" stroke-width="4" />
+          
+          <!-- Concentric technical layout markers -->
+          <circle cx="400" cy="300" r="140" fill="none" stroke="#1c1d1a" stroke-width="2" stroke-dasharray="10 6" opacity="0.3" class="spin-clockwise" style="transform-origin: 400px 300px;" />
+          <circle cx="400" cy="300" r="120" fill="none" stroke="#1c1d1a" stroke-width="1.5" stroke-dasharray="2 4" />
+          <circle cx="400" cy="300" r="95" fill="none" stroke="#1c1d1a" stroke-width="2" />
+          
+          <!-- Brackets < > background deco -->
+          <text x="275" y="325" font-family="'Courier New', Courier, monospace" font-weight="900" font-size="80" fill="#c4bbf0" opacity="0.4">&lt;</text>
+          <text x="490" y="325" font-family="'Courier New', Courier, monospace" font-weight="900" font-size="80" fill="#c4bbf0" opacity="0.4">&gt;</text>
+          
+          <!-- Main 3D Text Badge group -->
+          <g transform="translate(400, 300)">
+            <text x="-48" y="35" font-family="'Montserrat', sans-serif" font-weight="900" font-size="110" fill="#1c1d1a" text-anchor="middle">R</text>
+            <text x="42" y="35" font-family="'Montserrat', sans-serif" font-weight="900" font-size="110" fill="#1c1d1a" text-anchor="middle">K</text>
+            
+            <text x="-54" y="29" font-family="'Montserrat', sans-serif" font-weight="900" font-size="110" fill="#e25c34" stroke="#1c1d1a" stroke-width="3" text-anchor="middle">R</text>
+            <text x="36" y="29" font-family="'Montserrat', sans-serif" font-weight="900" font-size="110" fill="#f1b34c" stroke="#1c1d1a" stroke-width="3" text-anchor="middle">K</text>
+          </g>
+          
+          <!-- Orbiting pill badges with block shadows -->
+          <g class="float-anim-slow">
+            <!-- Code Badge -->
+            <g transform="translate(200, 110)">
+              <rect x="0" y="0" width="90" height="34" rx="4" fill="#88c4b7" stroke="#1c1d1a" stroke-width="2" />
+              <rect x="3" y="3" width="90" height="34" rx="4" fill="#88c4b7" stroke="#1c1d1a" stroke-width="2" />
+              <text x="48" y="24" font-family="'Montserrat', sans-serif" font-weight="900" font-size="12" fill="#1c1d1a" text-anchor="middle">&lt;CODE/&gt;</text>
+            </g>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+            <!-- Design Badge -->
+            <g transform="translate(510, 220)">
+              <rect x="0" y="0" width="85" height="34" rx="4" fill="#f7aa94" stroke="#1c1d1a" stroke-width="2" />
+              <rect x="3" y="3" width="85" height="34" rx="4" fill="#f7aa94" stroke="#1c1d1a" stroke-width="2" />
+              <text x="45" y="24" font-family="'Montserrat', sans-serif" font-weight="900" font-size="12" fill="#1c1d1a" text-anchor="middle">DESIGN</text>
+            </g>
+
+            <!-- AI Badge -->
+            <g transform="translate(210, 430)">
+              <rect x="0" y="0" width="60" height="34" rx="4" fill="#c4bbf0" stroke="#1c1d1a" stroke-width="2" />
+              <rect x="3" y="3" width="60" height="34" rx="4" fill="#c4bbf0" stroke="#1c1d1a" stroke-width="2" />
+              <text x="33" y="24" font-family="'Montserrat', sans-serif" font-weight="900" font-size="12" fill="#1c1d1a" text-anchor="middle">AI</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section class="internships-section scroll-reveal" id="internships">
+      <div class="section-title">
+        <h2>INTERNSHIPS</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="internships-list-wrapper">
+        <!-- Internship 1: Mist Software Solutions -->
+        <div class="internship-item-card card-teal scroll-reveal">
+          <div class="dossier-tab">MIST-INFO</div>
+          <div class="internship-header-row">
+            <div class="intern-company-block">
+              <span class="intern-icon spin-hover-icon">💼</span>
+              <div>
+                <h3>Mist Software Solutions Pvt. Ltd.</h3>
+                <span class="intern-date">May 2025 – June 2025</span>
+              </div>
+            </div>
+            <span class="intern-role-badge pulsing-badge">Web Developer Intern</span>
+          </div>
+          <ul class="intern-bullets-list">
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Developed and recreated functionalities of a real-world web application during internship training.</span>
+            </li>
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Designed responsive web pages using HTML, CSS, JavaScript, and Bootstrap.</span>
+            </li>
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Implemented backend features using PHP and MySQL for form processing and dynamic content management.</span>
+            </li>
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Worked with Sublime Text and XAMPP for application development and local testing.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Internship 2: Zaalima Development -->
+        <div class="internship-item-card card-orange scroll-reveal">
+          <div class="dossier-tab">ZAALIMA-INFO</div>
+          <div class="internship-header-row">
+            <div class="intern-company-block">
+              <span class="intern-icon spin-hover-icon">🚀</span>
+              <div>
+                <h3>Zaalima Development Pvt. Ltd.</h3>
+                <span class="intern-date">March 2026 – May 2026</span>
+              </div>
+            </div>
+            <span class="intern-role-badge pulsing-badge">Full Stack Developer Intern</span>
+          </div>
+          <ul class="intern-bullets-list">
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Developed full-stack web application modules using the MERN Stack (MongoDB, Express.js, React.js, Node.js).</span>
+            </li>
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Utilized AI-assisted development tools to support implementation and enhance development efficiency.</span>
+            </li>
+            <li class="stagger-bullet">
+              <span class="bullet-check">✓</span>
+              <span>Contributed to frontend, backend, and database integration in a collaborative remote environment.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section (3D Orbit Theater: Moons revolving around developer Earth) -->
+    <section class="skills-section scroll-reveal" id="skills">
+      <div class="section-title">
+        <h2>SKILLS</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="skills-split-container">
+        <!-- Left Side: Interactive grid of category cards -->
+        <div class="skills-grid-left animate-fade-left">
+          
+          <!-- Programming Languages -->
+          <div class="skill-category-block sk-teal">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">💻</span>
+              <h4>Programming Languages</h4>
+            </div>
+            <div class="skill-tags-flex">
+              <span class="interactive-tag">Java</span>
+              <span class="interactive-tag">Python</span>
+              <span class="interactive-tag">JavaScript</span>
+              <span class="interactive-tag">SQL</span>
+            </div>
+          </div>
+
+          <!-- Web Technologies -->
+          <div class="skill-category-block sk-orange">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">⚙️</span>
+              <h4>Web Technologies</h4>
+            </div>
+            <div class="skill-tags-flex">
+              <span class="interactive-tag">HTML</span>
+              <span class="interactive-tag">CSS</span>
+              <span class="interactive-tag">React.js</span>
+              <span class="interactive-tag">Node.js</span>
+              <span class="interactive-tag">Express.js</span>
+              <span class="interactive-tag">Django</span>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="skill-category-block sk-coral">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">📁</span>
+              <h4>Database</h4>
+            </div>
+            <div class="skill-tags-flex">
+              <span class="interactive-tag">MongoDB</span>
+              <span class="interactive-tag">MySQL</span>
+            </div>
+          </div>
+
+          <!-- Tools & Platforms -->
+          <div class="skill-category-block sk-blue">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">🔧</span>
+              <h4>Tools &amp; Platforms</h4>
+            </div>
+            <div class="skill-tags-flex">
+              <span class="interactive-tag">Git</span>
+              <span class="interactive-tag">GitHub</span>
+              <span class="interactive-tag">VS Code</span>
+              <span class="interactive-tag">XAMPP</span>
+              <span class="interactive-tag">Postman</span>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-category-block sk-green">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">🗣️</span>
+              <h4>Soft Skills</h4>
+            </div>
+            <div class="skill-tags-flex">
+              <span class="interactive-tag">Problem Solving</span>
+              <span class="interactive-tag">Team Collaboration</span>
+              <span class="interactive-tag">Communication</span>
+              <span class="interactive-tag">Adaptability</span>
+              <span class="interactive-tag">Leadership</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: 3D Orbit Theater with skills passing in front and behind developer -->
+        <div class="skills-illustration-side animate-fade-right">
+          <div class="orbit-theater">
+            
+            <!-- Central Meditating Developer Figure ("Earth") -->
+            <div class="center-earth">
+              <svg class="skills-vector float-anim" viewBox="0 0 400 400" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="200" r="110" fill="#faf6eb" stroke="#1c1d1a" stroke-width="2" />
+                <!-- Concentric Meditation waves (focus rings) -->
+                <circle cx="200" cy="170" r="40" fill="none" stroke="#e25c34" stroke-width="2" class="meditation-wave wave-1" />
+                <circle cx="200" cy="170" r="60" fill="none" stroke="#f1b34c" stroke-width="2" class="meditation-wave wave-2" />
+                <circle cx="200" cy="170" r="80" fill="none" stroke="#88c4b7" stroke-width="2" class="meditation-wave wave-3" />
+                
+                <!-- Meditating body silhouette (Breathing animation) -->
+                <g class="meditating-torso" style="transform-origin: 200px 250px;">
+                  <path d="M60,180 L180,180 L200,240 C170,250 70,250 40,240 Z" fill="#e25c34" stroke="#1c1d1a" stroke-width="4" transform="translate(20, 90)" />
+                  <path d="M20,240 C20,280 220,280 220,240 Z" fill="#2b2c28" stroke="#1c1d1a" stroke-width="4" transform="translate(20, 90)" />
+                  <rect x="190" y="200" width="20" height="30" fill="#fddbbf" stroke="#1c1d1a" stroke-width="3" />
+                  <circle cx="200" cy="170" r="34" fill="#fddbbf" stroke="#1c1d1a" stroke-width="4" />
+                  <circle cx="200" cy="130" r="16" fill="#1c1d1a" stroke="#1c1d1a" stroke-width="4" />
+                  <path d="M190,175 Q200,185 210,175" fill="none" stroke="#1c1d1a" stroke-width="3" stroke-linecap="round" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Orbiting Moon Tech Badges (3D Transform Revolutions) -->
+            <!-- Level 1 (Top Orbit, Clockwise) -->
+            <div class="orbiting-moon sk-teal orbit-l1-1">JAVA</div>
+            <div class="orbiting-moon sk-orange orbit-l1-2">PYTHON</div>
+            <div class="orbiting-moon sk-coral orbit-l1-3">SQL</div>
+
+            <!-- Level 2 (Middle Orbit, Counter-Clockwise) -->
+            <div class="orbiting-moon sk-blue orbit-l2-1">REACT.JS</div>
+            <div class="orbiting-moon sk-green orbit-l2-2">NODE.JS</div>
+            <div class="orbiting-moon sk-purple orbit-l2-3">DJANGO</div>
+
+            <!-- Level 3 (Bottom Orbit, Clockwise) -->
+            <div class="orbiting-moon sk-teal orbit-l3-1">MONGODB</div>
+            <div class="orbiting-moon sk-orange orbit-l3-2">GIT</div>
+            <div class="orbiting-moon sk-coral orbit-l3-3">POSTMAN</div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects scroll-reveal" id="portfolio">
+      <div class="section-title">
+        <h2>PROJECTS</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <!-- Project 1: Resume Analyzer -->
+      <div class="project-split-container scroll-reveal">
+        <!-- Left Side: Browser mockup screenshot -->
+        <div class="project-mockup-side animate-fade-left">
+          <div class="browser-mockup">
+            <div class="browser-header-bar">
+              <span class="browser-dot red-dot"></span>
+              <span class="browser-dot yellow-dot"></span>
+              <span class="browser-dot green-dot"></span>
+            </div>
+            <!-- Dynamic Vector of Resume Interface -->
+            <svg class="mockup-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="500" height="320" fill="#ffffff" />
+              <rect x="20" y="30" width="120" height="260" fill="#88c4b7" opacity="0.15" />
+              <circle cx="80" cy="80" r="30" fill="#88c4b7" />
+              <!-- Main panel -->
+              <rect x="160" y="30" width="310" height="60" rx="5" fill="#f7aa94" opacity="0.3" />
+              <rect x="180" y="45" width="220" height="15" fill="#1c1d1a" opacity="0.7" />
+              <!-- Upload Box -->
+              <rect x="160" y="110" width="310" height="130" rx="8" fill="none" stroke="#1c1d1a" stroke-width="2" stroke-dasharray="6 6" />
+              <text x="315" y="180" font-family="sans-serif" font-size="14" fill="#1c1d1a" font-weight="bold" text-anchor="middle">UPLOAD RESUME HERE</text>
+              <rect x="250" y="200" width="130" height="25" rx="4" fill="#e25c34" stroke="#1c1d1a" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right Side: Details with GitHub only -->
+        <div class="project-details-side animate-fade-right">
+          <div class="project-badge">AI &amp; NLP</div>
+          <h3 class="project-sub-heading">Resume Analyzer &amp; Skill Gap Detector</h3>
+          <ul class="project-bullets-detail">
+            <li>Developed a full-stack web application to analyze uploaded resumes and compare them with target job descriptions.</li>
+            <li>Implemented NLP-based resume parsing to identify skill gaps and generate personalized learning recommendations.</li>
+            <li>Designed an interactive and user-friendly frontend using HTML, CSS, and JavaScript.</li>
+            <li>Built backend functionality using Django for resume processing and analysis.</li>
+          </ul>
+          <div class="tech-stack" style="margin-bottom: 24px;">
+            <span>Python</span><span>Django</span><span>NLP</span><span>React</span><span>MySQL</span>
+          </div>
+          <div class="action-buttons">
+            <a href="https://github.com/Rithika-1806" target="_blank" class="btn btn-outline">GITHUB</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: DEV-TRACK AI -->
+      <div class="project-split-container flex-reverse-tablet scroll-reveal" style="margin-top: 80px;">
+        <!-- Left Side Details -->
+        <div class="project-details-side animate-fade-left">
+          <div class="project-badge">FULL STACK</div>
+          <h3 class="project-sub-heading">DEV-TRACK AI</h3>
+          <ul class="project-bullets-detail">
+            <li>Developed a full-stack project management application to manage projects, tasks, and team workflows.</li>
+            <li>Implemented secure user authentication and authorization using Spring Security and JWT.</li>
+            <li>Built RESTful APIs for project, task, and user management with seamless React frontend integration.</li>
+            <li>Designed an interactive dashboard featuring project statistics, task progress, and productivity analytics using charts.</li>
+          </ul>
+          <div class="tech-stack" style="margin-bottom: 24px;">
+            <span>React</span><span>Spring Boot</span><span>Security</span><span>JWT</span><span>MySQL</span>
+          </div>
+          <div class="action-buttons">
+            <a href="https://github.com/Rithika-1806" target="_blank" class="btn btn-outline">GITHUB</a>
+          </div>
+        </div>
+
+        <!-- Right Side Mockup -->
+        <div class="project-mockup-side animate-fade-right">
+          <div class="browser-mockup">
+            <div class="browser-header-bar">
+              <span class="browser-dot red-dot"></span>
+              <span class="browser-dot yellow-dot"></span>
+              <span class="browser-dot green-dot"></span>
+            </div>
+            <!-- Dynamic Vector of Portal Interface -->
+            <svg class="mockup-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="500" height="320" fill="#ffffff" />
+              <!-- Navbar -->
+              <rect width="500" height="40" fill="#faf6eb" stroke="#1c1d1a" stroke-width="1.5" />
+              <!-- Sidebar -->
+              <rect y="40" width="80" height="280" fill="#7eabf3" opacity="0.15" />
+              <!-- Chart elements -->
+              <rect x="110" y="70" width="160" height="100" rx="4" fill="none" stroke="#1c1d1a" stroke-width="2" />
+              <line x1="130" y1="140" x2="170" y2="100" stroke="#ff5c5c" stroke-width="3" />
+              <line x1="170" y1="100" x2="210" y2="130" stroke="#ff5c5c" stroke-width="3" />
+              <line x1="210" y1="130" x2="250" y2="90" stroke="#ff5c5c" stroke-width="3" />
+              <!-- Status cards -->
+              <rect x="290" y="70" width="180" height="45" rx="4" fill="#c4bbf0" stroke="#1c1d1a" stroke-width="2" />
+              <rect x="290" y="125" width="180" height="45" rx="4" fill="#b3d395" stroke="#1c1d1a" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section scroll-reveal" id="certifications">
+      <div class="section-title">
+        <h2>CERTIFICATIONS</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="certifications-grid">
+        <!-- Certification 1 -->
+        <div class="cert-card card-coral scroll-reveal">
+          <div class="cert-icon-wrapper">
+            <svg class="cert-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <div class="cert-content">
+            <h3 class="cert-title">SQL Bootcamp</h3>
+            <p class="cert-issuer">Lets Upgrade</p>
+            <div class="cert-meta">
+              <span class="cert-date">March 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certification 2 -->
+        <div class="cert-card card-green scroll-reveal">
+          <div class="cert-icon-wrapper">
+            <svg class="cert-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <div class="cert-content">
+            <h3 class="cert-title">MongoDB Essentials</h3>
+            <p class="cert-issuer">LinkedIn Learning</p>
+            <div class="cert-meta">
+              <span class="cert-date">June 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certification 3 -->
+        <div class="cert-card card-purple scroll-reveal">
+          <div class="cert-icon-wrapper">
+            <svg class="cert-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          <div class="cert-content">
+            <h3 class="cert-title">Internet of Things</h3>
+            <p class="cert-issuer">NPTEL</p>
+            <div class="cert-meta">
+              <span class="cert-date">Completed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events & Participations Section -->
+    <section class="events-section scroll-reveal alternate-section" id="events">
+      <div class="section-title">
+        <h2>EVENTS &amp; PARTICIPATIONS</h2>
+        <div class="title-underline"></div>
+      </div>
+      
+      <div class="events-grid">
+        <!-- Paper Presentation -->
+        <div class="event-card card-teal scroll-reveal">
+          <div class="event-icon">📝</div>
+          <div class="event-content">
+            <h3>Paper Presentation</h3>
+            <h4 class="event-location">Kongu Engineering College</h4>
+            <p>Presented an innovative technical paper, showcasing research, analytical thinking, and communication skills on advanced technical concepts.</p>
+          </div>
+        </div>
+        
+        <!-- Hackathon -->
+        <div class="event-card card-orange scroll-reveal">
+          <div class="event-icon">🏆</div>
+          <div class="event-content">
+            <h3>Hackathon</h3>
+            <h4 class="event-location">KPR Institute of Technology</h4>
+            <p>Collaborated in a competitive environment to rapidly prototype and develop a software solution within a strict time limit.</p>
+          </div>
+        </div>
+        
+        <!-- Workshops -->
+        <div class="event-card card-blue scroll-reveal">
+          <div class="event-icon">⚙️</div>
+          <div class="event-content">
+            <h3>Workshops</h3>
+            <div class="workshop-item">
+              <strong>Augmented Reality</strong>
+              <span class="workshop-location">Coimbatore Institute of Technology (CIT)</span>
+            </div>
+            <div class="workshop-item">
+              <strong>Machine Learning</strong>
+              <span class="workshop-location">Workshop Participation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education-section scroll-reveal" id="education">
+      <div class="section-title">
+        <h2>EDUCATION</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="education-grid">
+        <!-- Education 1 -->
+        <div class="education-card card-teal scroll-reveal">
+          <div class="education-icon-wrapper">
+            <svg class="edu-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
+          </div>
+          <div class="education-details">
+            <h3 class="edu-school">Dr. N.G.P Institute of Technology</h3>
+            <h4 class="edu-degree">B.E Computer Science Engineering</h4>
+            <div class="edu-meta">
+              <span class="edu-duration">2023 – 2027</span>
+              <span class="edu-gpa"><strong>CGPA:</strong> 8.51</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education 2 -->
+        <div class="education-card card-blue scroll-reveal">
+          <div class="education-icon-wrapper">
+            <svg class="edu-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
+          <div class="education-details">
+            <h3 class="edu-school">Hindusthan Matriculation School</h3>
+            <h4 class="edu-degree">HSC (Higher Secondary)</h4>
+            <div class="edu-meta">
+              <span class="edu-duration">Completed</span>
+              <span class="edu-gpa"><strong>Percentage:</strong> 87%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements-section scroll-reveal alternate-section" id="achievements">
+      <div class="section-title">
+        <h2>Milestones &amp; Achievements</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="achievements-grid">
+        <div class="stat-card dashboard-card card-coral scroll-reveal">
+          <div class="stat-icon">🎓</div>
+          <div class="stat-value" data-target="8.51" data-decimals="2">0.00</div>
+          <div class="stat-label">CGPA</div>
+        </div>
+        <div class="stat-card dashboard-card card-green scroll-reveal">
+          <div class="stat-icon">💻</div>
+          <div class="stat-value" data-target="2" data-suffix="+">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-card dashboard-card card-purple scroll-reveal">
+          <div class="stat-icon">💼</div>
+          <div class="stat-value" data-target="3">0</div>
+          <div class="stat-label">Internships</div>
+        </div>
+        <div class="stat-card dashboard-card card-teal scroll-reveal">
+          <div class="stat-icon">🛠️</div>
+          <div class="stat-value" data-target="15" data-suffix="+">0</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Large Contact Section -->
+  <section class="contact-section scroll-reveal" id="contact">
+    <div class="contact-box-container">
+      
+      <!-- Left Side: Input Form Card -->
+      <div class="contact-form-side animate-fade-left">
+        <h2>Get in touch</h2>
+        <p class="contact-subtitle-desc">Feel free to connect with me. I'm currently seeking Full Stack Development and Software Engineering opportunities.</p>
+        
+        <form class="brutalist-form" action="#" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" required placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" required placeholder=""></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+        </form>
+      </div>
+
+      <!-- Right Side: Dark agents block -->
+      <div class="contact-info-side animate-fade-right">
+        <!-- Circular Agent Vector illustration -->
+        <svg class="contact-agents-illustration" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="180" rx="140" ry="100" fill="#faf6eb" stroke="#1c1d1a" stroke-width="3" />
+          <!-- Agent 1 (Boy) -->
+          <g transform="translate(100, 110)">
+            <path d="M10,120 L70,120 L80,160 L0,160 Z" fill="#e25c34" stroke="#1c1d1a" stroke-width="3" />
+            <circle cx="40" cy="70" r="26" fill="#fddbbf" stroke="#1c1d1a" stroke-width="3" />
+            <path d="M30,38 Q40,30 50,38 Z" fill="#1c1d1a" stroke="#1c1d1a" stroke-width="3" />
+            <!-- Headset -->
+            <path d="M14,70 Q14,44 40,44" fill="none" stroke="#1c1d1a" stroke-width="3" />
+            <circle cx="14" cy="70" r="6" fill="#1c1d1a" />
+            <line x1="14" y1="70" x2="32" y2="80" stroke="#1c1d1a" stroke-width="2.5" />
+          </g>
+          <!-- Agent 2 (Girl) -->
+          <g transform="translate(210, 110)">
+            <path d="M10,120 L70,120 L80,160 L0,160 Z" fill="#e25c34" stroke="#1c1d1a" stroke-width="3" />
+            <circle cx="40" cy="70" r="26" fill="#fddbbf" stroke="#1c1d1a" stroke-width="3" />
+            <circle cx="40" cy="40" r="12" fill="#1c1d1a" stroke="#1c1d1a" stroke-width="3" />
+            <!-- Headset -->
+            <path d="M14,70 Q14,44 40,44" fill="none" stroke="#1c1d1a" stroke-width="3" />
+            <circle cx="14" cy="70" r="6" fill="#1c1d1a" />
+            <line x1="14" y1="70" x2="32" y2="80" stroke="#1c1d1a" stroke-width="2.5" />
+          </g>
+          <!-- Chat box -->
+          <rect x="160" y="40" width="80" height="40" rx="8" fill="#ffffff" stroke="#1c1d1a" stroke-width="3" />
+          <text x="200" y="66" font-family="sans-serif" font-weight="bold" font-size="24" text-anchor="middle" fill="#1c1d1a">...</text>
+        </svg>
+
+        <!-- Block Rows for Phone and Mail -->
+        <div class="contact-blocks-list">
+          <div class="contact-block-row">
+            <div class="c-block-icon icon-teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cb-svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div class="c-block-text">
+              <span class="cb-label">PHONE</span>
+              <span class="cb-val">+91 98765 43210</span>
+            </div>
+          </div>
+          <div class="contact-block-row">
+            <div class="c-block-icon icon-yellow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cb-svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="c-block-text">
+              <span class="cb-label">MAIL</span>
+              <span class="cb-val">rithika.kv18@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Large Footer Section -->
+  <footer class="bottom-footer">
+    <div class="footer-bottom-container">
+      <p class="copyright-text">&copy; 2026 Rithika K. All rights reserved.</p>
+      <p class="designed-text">Designed with ❤️ using HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top-btn" aria-label="Scroll back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
 </body>
-
 </html>
